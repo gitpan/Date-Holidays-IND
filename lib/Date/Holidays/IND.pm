@@ -15,11 +15,11 @@ Date::Holidays::IND - Interface to Indian holidays.
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 Readonly my $MONTHS   => [ undef, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 Readonly my $WEEKDAYS => [ undef, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
 
@@ -581,7 +581,7 @@ local custom.
 =head1 CONSTRUCTOR
 
 The constructor  can be created by passing the year in 4 digits form. Currently we have data for year
-2011 and 2012. So the constructor would only accept either 2011 or 2012 as valid years.
+2011 and upto March 2012. So the constructor would only accept either 2011 or 2012 as valid years.
 
     use strict; use warnings;
     use Date::Holidays::IND;

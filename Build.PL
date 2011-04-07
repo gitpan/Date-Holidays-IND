@@ -2,6 +2,7 @@ use strict;use warnings;
 use Module::Build;
 
 my $builder = Module::Build->new(
+    sign              => 1,
     module_name       => 'Date::Holidays::IND',
     license           => 'perl',
     dist_author       => q{Mohammad S Anwar <mohammad.anwar@yahoo.com>},
