@@ -15,11 +15,11 @@ Date::Holidays::IND - Interface to Indian holidays.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 Readonly my $MONTHS   => [ undef, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec' ];
 Readonly my $WEEKDAYS => [ undef, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun' ];
 
@@ -560,28 +560,29 @@ Readonly my $REGIONAL =>
     2011 => $HOLIDAYS_2011,
 };
 
-=head1 SYNOPSIS
+=head1 DESCRIPTION
 
-India, being a culturally and religiously diverse society, celebrates various holidays and festivals. 
-There  are  three  national  holidays in India: states  and regions have local festivals depending on 
-prevalent  religious  and  linguistic  demographics.  Popular  religious  festivals include the Hindu 
-festivals of Diwali, Ganesh Chaturthi, Holi, Dussehra, Islamic festivals of Eid ul-Fitr, Eid al-Adha, 
-Mawlid an-Nabi and  Christian  festivals of Christmas and days of observances such as Good Friday are 
-observed throughout the country.
+India,  being  a  culturally  and religiously diverse society, celebrates various holidays and
+festivals. There are three national holidays in India: states and regions have local festivals
+depending  on  prevalent  religious  and  linguistic demographics. Popular religious festivals
+include the Hindu festivals of  Diwali, Ganesh Chaturthi, Holi, Dussehra, Islamic festivals of
+Eid ul-Fitr,  Eid al-Adha,  Mawlid an-Nabi and  Christian  festivals of Christmas  and days of
+observances such as Good Friday are observed throughout the country.
 
-Muharram, mourning for the Prophet Muhammad's grandson is observed by some sects of Islam.In addition 
-the Sikh festivals such as Guru Nanak Jayanti, the Christian festivals such as Christmas, Good Friday 
-and  Jain  festivals  like  Mahavir  Jayanti,  Paryushan  are celebrated in certain areas where these 
-religions  have  a  significant following. The annual holidays are widely observed by state and local 
-governments; however, they may alter the dates of observance or add or subtract holidays according to 
-local custom.
+Muharram,  mourning for the Prophet Muhammad's grandson is observed by some sects of Islam. In
+addition the Sikh festivals such as  Guru Nanak Jayanti, the Christian festivals as Christmas,
+Good Friday and  Jain  festivals like  Mahavir  Jayanti,  Paryushan  are celebrated in certain
+areas  where  these  religions  have  a  significant following. The annual holidays are widely
+observed  by  state  and local governments; however, they may alter the dates of observance or
+add or subtract holidays according to local custom.
 
 =cut
 
 =head1 CONSTRUCTOR
 
-The constructor  can be created by passing the year in 4 digits form. Currently we have data for year
-2011 and upto March 2012. So the constructor would only accept either 2011 or 2012 as valid years.
+The constructor can be created by passing the year in 4 digits form.Currently we have data for
+year 2011 and upto March 2012.So the constructor would only accept either 2011 / 2012 as valid 
+years.
 
     use strict; use warnings;
     use Date::Holidays::IND;
@@ -603,9 +604,9 @@ sub new
     $self->{regional_holidays} = _build_regional_holidays($yyyy);
     $self->{state_holidays}    = _build_state_holidays($yyyy);
     $self->{holidays_table}    = _build_holidays_table($self->{state_holidays});
-    
+
     bless $self, $class;
-    
+
     return $self;
 }
 
@@ -627,7 +628,7 @@ Returns National Holidays for the given year.
 sub get_national_holidays
 {
     my $self = shift;
-    
+
     return $self->{national_holidays};
 }
 
@@ -647,7 +648,7 @@ Returns Regional Holidays for the given year.
 sub get_regional_holidays
 {
     my $self = shift;
-    
+
     return $self->{regional_holidays};
 }
 
@@ -690,13 +691,13 @@ Returns Holidays Table for each state of India for the given year.
 sub get_holidays_table
 {
     my $self = shift;
-    
+
     my ($string);
     foreach (keys %{$self->{holidays_table}})
     {
-        $string .= sprintf("%s: %d\n", $STATES->{$_}, $self->{holidays_table}->{$_});    
+        $string .= sprintf("%s: %d\n", $STATES->{$_}, $self->{holidays_table}->{$_});
     }
-    
+
     return $string;
 }
 
@@ -732,7 +733,7 @@ Returns all holidays in human readable format.
 
     my $ind = Date::Holidays::IND->new(2011);
     print $ind->as_string();
-    
+
     # or just simply
     print $ind;
 
@@ -741,7 +742,7 @@ Returns all holidays in human readable format.
 sub as_string
 {
     my $self = shift;
-    
+
     my ($dow, $string, $type);
     foreach $type ('national_holidays','regional_holidays')
     {
@@ -786,7 +787,7 @@ sub get
 sub _build_national_holidays
 {
     my $yyyy = shift;
-    
+
     my $national_holidays;
     foreach (@$NATIONAL)
     {
@@ -858,9 +859,10 @@ Mohammad S Anwar, C<< <mohammad.anwar at yahoo.com> >>
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-date-holidays-ind at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Date-Holidays-IND>.  
-I will be notified, and then you'll automatically be notified of progress on your bug as I make changes.
+Please  report  any  bugs  or  feature requests to C<bug-date-holidays-ind at rt.cpan.org>, or
+through the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Date-Holidays-IND>.
+I  will  be  notified,  and then you'll automatically be notified of progress on your bug as I
+make changes.
 
 =head1 SUPPORT
 
@@ -894,15 +896,16 @@ L<http://search.cpan.org/dist/Date-Holidays-IND/>
 
 Copyright 2011 Mohammad S Anwar.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+This  program  is  free  software; you can redistribute it and/or modify it under the terms of
+either:  the  GNU  General Public License as published by the Free Software Foundation; or the
+Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
 
 =head1 DISCLAIMER
 
-This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+This  program  is  distributed  in  the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 =cut
 
